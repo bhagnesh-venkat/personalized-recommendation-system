@@ -33,10 +33,8 @@ npm init -y
   - Obtained connection string
 
 - Updated `.env` file in the `backend` folder:
-
-```env
-MONGO_URI=<your_mongodb_connection_string>
-PORT=5000
+    - MONGO_URI=<your_mongodb_connection_string>
+    - PORT=5000
 
 - Created Express server (server.js) in backend.
 - Tested server connection with MongoDB:
