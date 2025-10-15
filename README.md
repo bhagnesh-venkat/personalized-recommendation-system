@@ -24,7 +24,6 @@ A web application that provides personalized recommendations to users. Built usi
   - `index.js` → Entry point, renders `app.js`
   - `app.js` → Handles routing and renders other components
 - Initialized frontend with:
-```bash
 npm init -y
 
 ### Day 3: Backend Setup and MongoDB Connection
@@ -44,4 +43,6 @@ PORT=5000
     - node server.js
 - Verified server is running on:
     - http://localhost:5000
+
+```bash
     
