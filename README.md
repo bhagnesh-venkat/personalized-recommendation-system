@@ -75,5 +75,20 @@ npm install --save-dev nodemon
     - server.js → entry point connecting everything.
     - Content-Type: application/json and raw body are necessary for Express to parse JSON requests.
 
+
+### Day 5 Progress Summary
+
+- Today, I worked on connecting the frontend and backend for user authentication in the MERN stack project.
+
+    ✅ Implemented the register and login routes in Express.js using MongoDB for data storage.
+
+    ✅ Tested both routes using Postman, verifying user creation, validation errors, and duplicate email handling (E11000 duplicate key error).
+
+    ✅ Ensured proper error handling for missing fields like name, email, or password.
+
+    ✅ Verified login functionality by sending email and password in JSON format through Postman.
+
+    ✅ Improved understanding of how MongoDB validation and unique index constraints work.
+
 ```bash
     
