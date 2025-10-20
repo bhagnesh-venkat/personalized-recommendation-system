@@ -81,14 +81,36 @@ npm install --save-dev nodemon
 - Today, I worked on connecting the frontend and backend for user authentication in the MERN stack project.
 
     ✅ Implemented the register and login routes in Express.js using MongoDB for data storage.
-
     ✅ Tested both routes using Postman, verifying user creation, validation errors, and duplicate email handling (E11000 duplicate key error).
-
     ✅ Ensured proper error handling for missing fields like name, email, or password.
-
     ✅ Verified login functionality by sending email and password in JSON format through Postman.
-
     ✅ Improved understanding of how MongoDB validation and unique index constraints work.
 
+### Day 6 Summary: JWT Authentication & Protected Routes
+- Features Implemented
+    - JWT (JSON Web Token) Authentication:
+        - Used JWT to create a token after successful login.
+        - Token expires after 1 hour.
+    - Middleware (verifyToken):
+        - Validates the token sent from client in the Authorization header.
+        - Denies access if token is missing or invalid.
+        - Attaches decoded user info to req.user for protected routes.
+    - Protected User Route:
+        -Created /api/users/profile route.
+        - Only accessible if valid JWT token is provided.
+
+Steps Taken
+    1. Installed jsonwebtoken for token generation.
+    2. Updated login route to generate JWT token after verifying user credentials.
+    3. Created verifyToken.js middleware:
+        - Reads token from req.headers.authorization
+        - Verifies the token using secret key
+        - Attaches user info to req.user
+    4. Tested protected route /api/users/profile using Postman with Bearer token.
+
+Example Token Usage in Postman
+    - Method: GET
+    - URL: http://localhost:5000/api/users/profile
+    - Authorization → Type: Bearer Token → Paste the token received from login
 ```bash
     

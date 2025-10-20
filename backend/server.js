@@ -26,7 +26,9 @@ mongoose
 
 // Routes
 const authRoutes = require("./routes/authRoutes");
+const userRoutes = require("./routes/userRoutes");
 app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
 
 app.get("/", (req, res) => {
   res.send("Welcome to the Personalized Recommendation API!");
