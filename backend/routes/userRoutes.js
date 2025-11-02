@@ -20,7 +20,7 @@ router.put("/update",verifyToken,async(req,res)=>{
   try{
     const {name, email, password} = req.body;
     const updatedData = {};
-    if(namr) updatedData.name = name;
+    if(name) updatedData.name = name;
     if(email) updatedData.email = email;
     if(password){
       const salt = await bcrypt.genSalt(10);
@@ -35,6 +35,16 @@ router.put("/update",verifyToken,async(req,res)=>{
     res.status(200).json(updatedUser);
   }catch(err){
     res.status(500).json({ message: "Error updating user", error: err.message });
+  }
+});
+
+// DELETE USER
+router.delete("/delete",verifyToken,async(req,res)=>{
+  try{
+    await User.findByIdAndDelete(req.user.id);
+    res.status(200).json({ message: "User deleted successfully" });
+  }catch(err){
+    res.status(500).json({ message: "Error deleting user", error: err.message });
   }
 });
 
