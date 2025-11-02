@@ -112,5 +112,26 @@ Example Token Usage in Postman
     - Method: GET
     - URL: http://localhost:5000/api/users/profile
     - Authorization → Type: Bearer Token → Paste the token received from login
+
+### 🔐Day 7 – Implemented JWT Authentication
+
+    -Integrated JWT (JSON Web Token) for user login authentication.
+    -After successful login, a token is generated using the jsonwebtoken library.
+    -This token stores the user’s ID securely and is later used to verify identity.
+    -Tested the login route using Postman and confirmed token generation.
+
+### 🧱Day 8 – Created Protected User Profile Route
+
+    -Added a middleware (verifyToken.js) to verify JWT tokens sent by users.
+    -Created a protected route /api/users/profile that only allows access with a valid token.
+    -If the token is missing or invalid → access is denied.
+    -Successfully tested via Postman using the Bearer Token authorization method.
+
+### 🧰Day 9 – Added Secure User Profile Update
+
+    -Implemented a PUT route /api/users/update to update user details like name, email, or password.
+    -Secured it with the same JWT middleware to ensure only logged-in users can update their info.
+    -Used bcrypt to hash the new password before saving.
+    -Successfully tested in Postman with Bearer Token authentication.
 ```bash
     
