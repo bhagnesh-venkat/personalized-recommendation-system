@@ -133,5 +133,16 @@ Example Token Usage in Postman
     -Secured it with the same JWT middleware to ensure only logged-in users can update their info.
     -Used bcrypt to hash the new password before saving.
     -Successfully tested in Postman with Bearer Token authentication.
+
+### 🌟 Day 10 – Delete User Profile (Protected Route)
+- Added a new DELETE route `/api/users/delete` in `userRoutes.js`.
+- Used **verifyToken middleware** to protect route so only logged-in users can delete their own account.
+- Deleted user data using:
+    await User.findByIdAndDelete(req.user.id);
+    Tested the route using Postman:
+- Method: DELETE
+    URL: http://localhost:5000/api/users/delete
+    Authorization: Bearer Token (from login)
+    Verified user deletion in MongoDB Atlas.
 ```bash
     
