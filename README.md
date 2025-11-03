@@ -144,5 +144,28 @@ Example Token Usage in Postman
     URL: http://localhost:5000/api/users/delete
     Authorization: Bearer Token (from login)
     Verified user deletion in MongoDB Atlas.
+## 🚀 Day 11 - Get All Users API (Admin Only)
+    Goal
+        - Created a secure route that allows only admin users to fetch all registered users.
+    Features Implemented
+        - Added `/api/users/all` route to retrieve all users.
+        - Protected the route using JWT verification.
+        - Restricted access to admins only.
+        - Excluded passwords from the returned data for security.
+    Testing
+        1. Login with an admin account to get the token.
+        2. Send a GET request to `/api/users/all` with Bearer token in headers.
+        3. Verify that:
+            - Admins can access and view all users.
+            - Non-admin users receive `"Access Denied! Admins only."`
+    Files Modified
+        - `routes/userRoutes.js` (Added admin-only route)
+        - `routes/authRoutes.js` (Ensured token includes `isAdmin` flag)
+### 🧾 Day 13 Summary
+    ✅ Added role field to User Schema
+    ✅ Created verifyAdmin middleware
+    ✅ Updated JWT payload to include role  
+    ✅ Implemented Admin-only route /api/users/all
+    ✅ Tested successfully using Postman
 ```bash
     
