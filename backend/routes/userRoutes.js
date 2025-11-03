@@ -2,6 +2,7 @@ const router = require("express").Router();
 const User = require("../models/User");
 const verifyToken = require("../middleware/verifyToken");
 const bcrypt = require("bcryptjs");
+const verifyAdmin = require("../middleware/verifyAdmin");
 
 // GET user profile (protected route)
 router.get("/profile", verifyToken, async (req, res) => {
@@ -39,18 +40,13 @@ router.put("/update",verifyToken,async(req,res)=>{
 });
 
 // GET ALL USERS (Admin only)
-router.get("/all", verifyToken, async (req, res) => {
+// Admin route to get all users
+router.get("/all", verifyToken, verifyAdmin, async (req, res) => {
   try {
-    // Check if the logged-in user is admin
-    if (!req.user.isAdmin) {
-      return res.status(403).json({ message: "Access Denied! Admins only." });
-    }
-
-    // Get all users (exclude passwords)
-    const users = await User.find({}, { password: 0 });
+    const users = await User.find().select("-password");
     res.status(200).json(users);
-  } catch (error) {
-    res.status(500).json({ message: "Error fetching users", error });
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching users", error: err.message });
   }
 });
 
