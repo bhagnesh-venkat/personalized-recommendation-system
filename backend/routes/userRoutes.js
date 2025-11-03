@@ -38,6 +38,23 @@ router.put("/update",verifyToken,async(req,res)=>{
   }
 });
 
+// GET ALL USERS (Admin only)
+router.get("/all", verifyToken, async (req, res) => {
+  try {
+    // Check if the logged-in user is admin
+    if (!req.user.isAdmin) {
+      return res.status(403).json({ message: "Access Denied! Admins only." });
+    }
+
+    // Get all users (exclude passwords)
+    const users = await User.find({}, { password: 0 });
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching users", error });
+  }
+});
+
+
 // DELETE USER
 router.delete("/delete",verifyToken,async(req,res)=>{
   try{

@@ -38,7 +38,7 @@ router.post("/login",async(req,res)=>{
 
     // Create and assign a token
     const token = jwt.sign(
-      { id: user._id },            // Payload
+      { id: user._id,isAdmin: user.isAdmin },            // Payload
       "secretKey123",              // Secret key (store this in .env later)
       { expiresIn: "1h" }          // Token validity
     );
