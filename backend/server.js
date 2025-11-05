@@ -28,9 +28,15 @@ mongoose
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const itemRoutes = require("./routes/itemRoutes");
+const movieRoute = require("./routes/movieRoutes");
+const recommendationRoute = require("./routes/recommendationRoutes");
+
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/items", itemRoutes);
+app.use("/api/movies", movieRoute);
+app.use("/api/recommendations", recommendationRoute);
+
 
 app.get("/", (req, res) => {
   res.send("Welcome to the Personalized Recommendation API!");
